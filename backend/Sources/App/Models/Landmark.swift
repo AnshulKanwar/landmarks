@@ -5,10 +5,10 @@
 //  Created by Anshul Kanwar on 30/10/23.
 //
 
-import Foundation
 import Fluent
+import Vapor
 
-final class Landmark: Model {
+final class Landmark: Model, Content {
     static let schema = "landmarks"
     
     @ID(custom: "id")
