@@ -10,6 +10,11 @@ public func configure(_ app: Application) async throws {
     app.databases.use(.sqlite(.file("landmarks.sqlite")), as: .sqlite)
     
     app.migrations.add(CreateLandmark())
+    
+    let fileMiddleware = FileMiddleware(
+        publicDirectory: app.directory.publicDirectory
+    )
+    app.middleware.use(fileMiddleware)
 
     // register routes
     try routes(app)
